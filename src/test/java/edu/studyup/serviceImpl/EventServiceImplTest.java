@@ -92,7 +92,7 @@ class EventServiceImplTest {
 		int eventID = 1;
 		String newName = "20202020202020202020";		
 		eventServiceImpl.updateEventName(eventID, newName);
-		assertEquals(newName, DataStorage.eventData.get(2).getName());
+		assertEquals(newName, DataStorage.eventData.get(eventID).getName());
 		
 	}
 		
