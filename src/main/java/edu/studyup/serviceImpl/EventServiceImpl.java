@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-
 import edu.studyup.entity.Event;
 import edu.studyup.entity.Student;
 import edu.studyup.service.EventService;
@@ -21,7 +19,7 @@ public class EventServiceImpl implements EventService {
 			throw new StudyUpException("No event found.");
 		}
 
-		if(name.length() >= 20) {
+		if(name.length() > 20) {
 			throw new StudyUpException("Length too long. Maximun is 20");
 		}
 		event.setName(name);
@@ -34,10 +32,10 @@ public class EventServiceImpl implements EventService {
 	public List<Event> getActiveEvents() {
 		Map<Integer, Event> eventData = DataStorage.eventData;
 		List<Event> activeEvents = new ArrayList<>();
-		//jon's code
-		for (Entry<Integer, Event> event : eventData.entrySet()) {
+		
+		for (Map.Entry<Integer, Event> event : eventData.entrySet()) {
 			Event ithEvent = event.getValue();
-			if (ithEvent.getDate().equals(new Date()) || ithEvent.getDate().after(new Date())) {
+			if(ithEvent.getDate().after(new Date()) || ithEvent.getDate().equals(new Date())) {
 				activeEvents.add(ithEvent);
 			}
 		}
@@ -49,10 +47,10 @@ public class EventServiceImpl implements EventService {
 		Map<Integer, Event> eventData = DataStorage.eventData;
 		List<Event> pastEvents = new ArrayList<>();
 		
-		for (Entry<Integer, Event> event : eventData.entrySet()) {
-			Event ithEvent= event.getValue();
-			// Checks if an event date is before today, if yes, then add to the past event list.
-			if(ithEvent.getDate().before(new Date())) {
+
+		for (Map.Entry<Integer, Event> event : eventData.entrySet()) {
+			Event ithEvent = event.getValue();
+			if(ithEvent.getDate().after(new Date()) || ithEvent.getDate().equals(new Date())) {
 				pastEvents.add(ithEvent);
 			}
 		}
