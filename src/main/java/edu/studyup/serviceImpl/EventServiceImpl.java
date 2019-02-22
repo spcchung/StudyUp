@@ -34,7 +34,7 @@ public class EventServiceImpl implements EventService {
 	public List<Event> getActiveEvents() {
 		Map<Integer, Event> eventData = DataStorage.eventData;
 		List<Event> activeEvents = new ArrayList<>();
-		
+		//jon's code
 		for (Entry<Integer, Event> event : eventData.entrySet()) {
 			Event ithEvent = event.getValue();
 			if (ithEvent.getDate().equals(new Date()) || ithEvent.getDate().after(new Date())) {
