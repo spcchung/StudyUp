@@ -68,8 +68,7 @@ class EventServiceImplTest {
 		eventServiceImpl.updateEventName(eventID, "Renamed Event 1");
 		assertEquals("Renamed Event 1", DataStorage.eventData.get(eventID).getName());
 	}
-	
-	@Test 
+
 	void testUpdateEvent_WrongEventID_badCase() {
 		int eventID = 3;
 		Assertions.assertThrows(StudyUpException.class, () -> {
@@ -342,5 +341,6 @@ class EventServiceImplTest {
 }
 	
 	
+
 
 
